@@ -7,10 +7,10 @@ switch ($action) {
         $controller = new ProductController();
         $controller->index();
         break;
-    case 'product-detail':
+    case 'ProductDetail':
         require_once 'controllers/ProductController.php';
         $controller = new ProductController();
-        $controller->detail($_GET['id']);
+        $controller->ProductDetail();
         break;
     default:
         require_once 'controllers/HomeController.php';
@@ -18,4 +18,5 @@ switch ($action) {
         $controller->index();
         break;
 }
+
 ?>
