@@ -1,18 +1,20 @@
 <?php
-// có class chứa các function thực thi xử lý logic 
-class ProductController
-{
-    public $modelProduct;
+require_once 'models/Product.php';
 
-    public function __construct()
-    {
-        $this->modelProduct = new ProductModel();
+class ProductController {
+    public function index() {
+        $productModel = new Product();
+        $products = $productModel->getAll();
+        include 'views/layout/header.php';
+        include 'views/product_list.php';
+        include 'views/layout/footer.php';
     }
 
-    public function Home()
-    {
-        $title = "Đây là trang chủ nhé hahaa";
-        $thoiTiet = "Hôm nay trời có vẻ là mưa";
-        require_once './views/trangchu.php';
+    public function detail($id) {
+        $productModel = new Product();
+        $product = $productModel->getById($id);
+        include 'views/layout/header.php';
+        include 'views/product_detail.php';
+        include 'views/layout/footer.php';
     }
 }

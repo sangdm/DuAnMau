@@ -1,16 +1,17 @@
-<?php 
-// Có class chứa các function thực thi tương tác với cơ sở dữ liệu 
-class ProductModel 
-{
-    public $conn;
-    public function __construct()
-    {
-        $this->conn = connectDB();
+<?php
+require_once 'ConnectDB.php';
+
+class Product extends ConnectDB {
+    public function getAll() {
+        $stmt = $this->conn->prepare("SELECT * FROM products");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Viết truy vấn danh sách sản phẩm 
-    public function getAllProduct()
-    {
-        
+    public function getById($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
+?>
