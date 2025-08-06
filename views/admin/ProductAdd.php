@@ -32,12 +32,6 @@
     <label>Mô tả:</label><br>
     <textarea name="description" rows="4"></textarea><br><br>
 
-    <label>Trạng thái:</label><br>
-    <select name="status">
-        <option value="active">Hiển thị</option>
-        <option value="inactive">Ẩn</option>
-    </select><br><br>
-
     <button type="submit">Thêm sản phẩm</button>
 </form>
 

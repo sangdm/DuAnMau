@@ -19,8 +19,8 @@ class ProductModel extends ConnectDB {
 
     // Thêm sản phẩm
     public function insert($data) {
-        $sql = "INSERT INTO products (category_id, name, total_quantity, description, title, status, price, image_product, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
+        $sql = "INSERT INTO products (category_id, name, total_quantity, description, title, price, image_product, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
             $data['category_id'],
@@ -28,7 +28,6 @@ class ProductModel extends ConnectDB {
             $data['total_quantity'],
             $data['description'],
             $data['title'],
-            $data['status'],
             $data['price'],
             $data['image_product']
         ]);
@@ -36,22 +35,22 @@ class ProductModel extends ConnectDB {
 
     // Cập nhật sản phẩm
     public function update($id, $data) {
-        $sql = "UPDATE products SET 
-                    category_id = ?, name = ?, total_quantity = ?, description = ?, 
-                    title = ?, status = ?, price = ?, image_product = ?, updated_at = NOW()
-                WHERE product_id = ?";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([
-            $data['category_id'],
-            $data['name'],
-            $data['total_quantity'],
-            $data['description'],
-            $data['title'],
-            $data['price'],
-            $data['image_product'],
-            $id
-        ]);
-    }
+    $sql = "UPDATE products 
+            SET name = ?, price = ?, image_product = ?, description = ?, category_id = ?, total_quantity = ?, title = ?
+            WHERE product_id = ?";
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute([
+        $data['name'],
+        $data['price'],
+        $data['image_product'],
+        $data['description'],
+        $data['category_id'],
+        $data['total_quantity'],
+        $data['title'],
+        $id
+    ]);
+}
+
 
    public function delete($id) {
     $sql = "DELETE FROM products WHERE product_id = ?";

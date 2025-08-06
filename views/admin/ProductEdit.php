@@ -26,11 +26,5 @@
         ?>
     </select><br><br>
 
-    <label>Đang hoạt động:</label><br>
-    <select name="active">
-        <option value="1" <?= $product['active'] ? 'selected' : '' ?>>Có</option>
-        <option value="0" <?= !$product['active'] ? 'selected' : '' ?>>Không</option>
-    </select><br><br>
-
     <button type="submit">Cập nhật</button>
 </form>

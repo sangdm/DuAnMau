@@ -85,6 +85,8 @@ class ProductController {
             'image_product' => $_POST['image_product'] ?? '',
             'description' => $_POST['description'] ?? '',
             'category_id' => $_POST['category_id'] ?? 0,
+            'total_quantity' => $_POST['total_quantity'] ?? 0,
+            'title' => $_POST['title'] ?? '',
         ];
 
         $model = new ProductModel();
