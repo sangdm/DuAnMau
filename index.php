@@ -30,6 +30,29 @@ if ($action === 'admin') {
             echo "<h2>Trang quản trị sản phẩm</h2>";
     }
 
+} elseif ($action === 'category') {
+    $act = $_GET['act'] ?? 'list';
+
+    require_once 'controllers/CategoryController.php';
+    $controller = new CategoryController();
+
+    switch ($act) {
+        case 'list':
+            $controller->list(); // Danh sách danh mục
+            break;
+        case 'add':
+            $controller->add(); // Form thêm danh mục
+            break;
+        case 'store':
+            $controller->store(); // Xử lý thêm mới danh mục (POST)
+            break;
+        case 'delete':
+            $controller->delete(); // Xử lý xoá danh mục
+            break;
+        default:
+            echo "<h2>Trang quản trị danh mục</h2>";
+    }
+
 } else {
     switch ($action) {
         case 'products':

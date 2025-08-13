@@ -1,37 +1,51 @@
-<h2>Thêm sản phẩm mới</h2>
+<h2 class="mb-4">Thêm sản phẩm mới</h2>
 
-<form action="index.php?action=admin&act=store" method="post">
-    <label>Danh mục:</label><br>
-<select name="category_id">
-    <?php
-    require_once 'models/CategoryModel.php';
-    $categoryModel = new CategoryModel();
-    $categories = $categoryModel->getAll();
-    foreach ($categories as $cat) {
-        echo "<option value='{$cat['category_id']}'>{$cat['name']}</option>";
-    }
-    ?>
-</select><br><br>
+<form action="index.php?action=admin&act=store" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="category_id" class="form-label">Danh mục:</label>
+        <select name="category_id" id="category_id" class="form-select" required>
+            <?php
+            require_once 'models/CategoryModel.php';
+            $categoryModel = new CategoryModel();
+            $categories = $categoryModel->getAll();
+            foreach ($categories as $cat) {
+                echo "<option value='{$cat['category_id']}'>{$cat['name']}</option>";
+            }
+            ?>
+        </select>
+    </div>
 
+    <div class="col-md-6">
+        <label for="name" class="form-label">Tên sản phẩm:</label>
+        <input type="text" name="name" id="name" class="form-control" required>
+    </div>
 
-    <label>Tên sản phẩm:</label><br>
-    <input type="text" name="name" required><br><br>
+    <div class="col-md-6">
+        <label for="total_quantity" class="form-label">Số lượng:</label>
+        <input type="number" name="total_quantity" id="total_quantity" class="form-control" required>
+    </div>
 
-    <label>Số lượng:</label><br>
-    <input type="number" name="total_quantity" required><br><br>
+    <div class="col-md-6">
+        <label for="price" class="form-label">Giá:</label>
+        <input type="number" step="0.01" name="price" id="price" class="form-control" required>
+    </div>
 
-    <label>Giá:</label><br>
-    <input type="number" step="0.01" name="price" required><br><br>
+    <div class="col-12">
+        <label for="image_product" class="form-label">Ảnh sản phẩm (link ảnh):</label>
+        <input type="text" name="image_product" id="image_product" class="form-control" required>
+    </div>
 
-    <label>Ảnh sản phẩm (link ảnh):</label><br>
-    <input type="text" name="image_product" required><br><br>
+    <div class="col-12">
+        <label for="title" class="form-label">Tiêu đề:</label>
+        <input type="text" name="title" id="title" class="form-control">
+    </div>
 
-    <label>Tiêu đề:</label><br>
-    <input type="text" name="title"><br><br>
+    <div class="col-12">
+        <label for="description" class="form-label">Mô tả:</label>
+        <textarea name="description" id="description" rows="4" class="form-control"></textarea>
+    </div>
 
-    <label>Mô tả:</label><br>
-    <textarea name="description" rows="4"></textarea><br><br>
-
-    <button type="submit">Thêm sản phẩm</button>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+    </div>
 </form>
-
