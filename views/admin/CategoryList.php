@@ -1,4 +1,4 @@
-<h2 class="mb-4">Danh sách danh mục (Admin)</h2>
+<h2 class="mb-4">Danh sách danh mục</h2>
 
 <div class="table-responsive">
     <table class="table table-striped table-hover" style="background-color: #f8f9fa;">
@@ -16,7 +16,13 @@
             <tr>
                 <td><?= $stt++ ?></td>
                 <td><?= htmlspecialchars($category['name']) ?></td>
-                <td><img src="<?= htmlspecialchars($category['image_url']) ?>" alt="<?= $category['name'] ?>" width="80" class="img-fluid"></td>
+                <td>
+                    <?php if (!empty($category['imageURL'])): ?>
+                        <img src="<?= htmlspecialchars($category['imageURL']) ?>" alt="<?= htmlspecialchars($category['name']) ?>" width="80" class="img-fluid">
+                    <?php else: ?>
+                        <span class="text-muted">Chưa có ảnh</span>
+                    <?php endif; ?>
+                </td>
                 <td>
                     <a href="index.php?action=category&act=delete&id=<?= $category['category_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xoá danh mục này?')">Xoá</a>
                 </td>
@@ -25,6 +31,7 @@
         </tbody>
     </table>
 </div>
+
 
 <!-- Toast Notification -->
 <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">

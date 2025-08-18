@@ -11,6 +11,11 @@
         <input type="number" name="price" id="price" value="<?= htmlspecialchars($product['price']) ?>" step="0.01" class="form-control" required>
     </div>
 
+    <div class="col-md-6">
+        <label for="total_quantity" class="form-label">Số lượng:</label>
+        <input type="number" name="total_quantity" id="total_quantity" value="<?= htmlspecialchars($product['total_quantity']) ?>" class="form-control" required>
+    </div>
+
     <div class="col-12">
         <label for="image_product" class="form-label">Ảnh (URL):</label>
         <input type="text" name="image_product" id="image_product" value="<?= htmlspecialchars($product['image_product']) ?>" class="form-control" required>
