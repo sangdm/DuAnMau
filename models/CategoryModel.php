@@ -27,4 +27,20 @@ class CategoryModel {
         $stmt = $this->conn->prepare("DELETE FROM categories WHERE category_id = :id");
         return $stmt->execute(['id' => $id]);
     }
+
+    public function getByCategory($category_id) {
+    $sql = "SELECT * FROM products WHERE category_id = :category_id";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([':category_id' => $category_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+    public function CategoryPage() {
+    $model = new ProductModel();
+    $categories = $model->getAll();
+    include 'views/layouts/header.php';
+    include 'views/Category.php';
+    include 'views/layouts/footer.php';
+}
 }

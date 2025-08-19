@@ -26,7 +26,9 @@ class ProductController {
             return;
         }
 
-        include 'views/ProductDetail.php';
+       include 'views/layouts/header.php';
+    include 'views/ProductDetail.php'; // file view hiển thị chi tiết
+    include 'views/layouts/footer.php';
     }
 
     // Admin

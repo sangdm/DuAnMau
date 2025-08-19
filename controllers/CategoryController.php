@@ -64,4 +64,23 @@ class CategoryController {
             include 'views/admin/layout.php';
         }
     }
+
+     public function show() {
+        $category_id = $_GET['category_id'] ?? null;
+        if (!$category_id) {
+            echo "Danh mục không tồn tại!";
+            return;
+        }
+
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->getAll(); // để hiển thị sidebar danh mục
+
+        $products = $categoryModel->getByCategory($category_id);
+
+        include 'views/layouts/header.php';
+        include 'views/Categories.php'; // file hiển thị sản phẩm theo danh mục
+        include 'views/layouts/footer.php';
+    }
+
+    
 }

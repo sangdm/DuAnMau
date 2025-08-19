@@ -64,7 +64,6 @@
     <nav>
       <a href="index.php">Trang chủ</a>
       <a href="index.php?action=products">Sản phẩm</a>
-      <a href="index.php?action=categories">Danh mục</a>
     </nav>
     <a href="index.php?action=login" class="login-btn">
       <i class="fa-solid fa-user"></i> Login

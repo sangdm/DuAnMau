@@ -29,7 +29,6 @@ if ($action === 'admin') {
         default:
             echo "<h2>Trang quản trị sản phẩm</h2>";
     }
-
 } elseif ($action === 'category') {
     $act = $_GET['act'] ?? 'list';
 
@@ -37,28 +36,30 @@ if ($action === 'admin') {
     $controller = new CategoryController();
 
     switch ($act) {
-        case 'list':
-            $controller->list(); // Danh sách danh mục
+        case 'list': // Admin list
+            $controller->list();
             break;
         case 'add':
-            $controller->add(); // Form thêm danh mục
+            $controller->add();
             break;
         case 'store':
-            $controller->store(); // Xử lý thêm mới danh mục (POST)
+            $controller->store();
             break;
         case 'delete':
-            $controller->delete(); // Xử lý xoá danh mục
+            $controller->delete();
+            break;
+        case 'show': // ✅ Trang user: hiển thị sản phẩm theo danh mục
+            $controller->show();
             break;
         default:
             echo "<h2>Trang quản trị danh mục</h2>";
     }
-
 } else {
     switch ($action) {
         case 'products':
             require_once 'controllers/ProductController.php';
             $controller = new ProductController();
-            $controller->index(); 
+            $controller->index();
             break;
 
         case 'ProductDetail':
@@ -66,11 +67,17 @@ if ($action === 'admin') {
             $controller = new ProductController();
             $controller->ProductDetail();
             break;
+         case 'category':
+        $act = $_GET['act'] ?? 'list';
+        if ($act === 'list') {
+            $controller->CategoryPage();
+        }
+        break;
 
         default:
             require_once 'controllers/HomeController.php';
             $controller = new HomeController();
-            $controller->index(); 
+            $controller->index();
             break;
     }
 }
