@@ -8,7 +8,7 @@
 
     <div class="col-12">
         <label for="image_url" class="form-label">Ảnh (URL):</label>
-        <input type="text" name="image_url" id="image_url" class="form-control" required>
+        <input type="text" name="imageURL" id="imageURL" class="form-control" required>
     </div>
 
     <div class="col-12">

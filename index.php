@@ -1,7 +1,13 @@
 <?php
+session_start();
 $action = $_GET['action'] ?? 'home';
 
 if ($action === 'admin') {
+    if (!isset($_SESSION['user_id']) || $_SESSION['role_id'] != 1) {
+        // Nếu không đăng nhập hoặc không phải admin
+        echo "<h2>Không có quyền truy cập trang này!</h2>";
+        exit;
+    }
     $act = $_GET['act'] ?? 'list';
 
     require_once 'controllers/ProductController.php';
@@ -54,6 +60,31 @@ if ($action === 'admin') {
         default:
             echo "<h2>Trang quản trị danh mục</h2>";
     }
+} elseif (in_array($action, ['login', 'register', 'logout'])) {
+    require_once 'controllers/UserController.php';
+    $controller = new UserController();
+
+    switch ($action) {
+        case 'login':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $controller->login();
+            } else {
+                $controller->showLoginForm();
+            }
+            break;
+
+        case 'register':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $controller->register();
+            } else {
+                $controller->showRegisterForm();
+            }
+            break;
+
+        case 'logout':
+            $controller->logout();
+            break;
+    }
 } else {
     switch ($action) {
         case 'products':
@@ -67,12 +98,12 @@ if ($action === 'admin') {
             $controller = new ProductController();
             $controller->ProductDetail();
             break;
-         case 'category':
-        $act = $_GET['act'] ?? 'list';
-        if ($act === 'list') {
-            $controller->CategoryPage();
-        }
-        break;
+        case 'category':
+            $act = $_GET['act'] ?? 'list';
+            if ($act === 'list') {
+                $controller->CategoryPage();
+            }
+            break;
 
         default:
             require_once 'controllers/HomeController.php';

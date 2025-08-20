@@ -85,37 +85,54 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         .toast-custom {
             background-color: #ffffff;
-            border: 1px solid #28a745; /* Viền màu xanh lá (thành công) */
-            border-radius: 8px; /* Bo góc mềm mại */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng */
-            max-width: 300px; /* Giới hạn chiều rộng */
+            border: 1px solid #28a745;
+            /* Viền màu xanh lá (thành công) */
+            border-radius: 8px;
+            /* Bo góc mềm mại */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* Hiệu ứng bóng */
+            max-width: 300px;
+            /* Giới hạn chiều rộng */
         }
+
         .toast-custom .toast-header {
-            background-color: #28a745; /* Màu nền header xanh lá */
-            color: #ffffff; /* Văn bản trắng */
-            border-bottom: 1px solid #218838; /* Viền dưới header */
-            border-radius: 7px 7px 0 0; /* Bo góc header */
+            background-color: #28a745;
+            /* Màu nền header xanh lá */
+            color: #ffffff;
+            /* Văn bản trắng */
+            border-bottom: 1px solid #218838;
+            /* Viền dưới header */
+            border-radius: 7px 7px 0 0;
+            /* Bo góc header */
         }
+
         .toast-custom .toast-body {
-            color: #155724; /* Văn bản trong body màu xanh lá đậm */
+            color: #155724;
+            /* Văn bản trong body màu xanh lá đậm */
             font-size: 14px;
         }
+
         .toast-custom .btn-close {
-            color: #ffffff; /* Màu nút đóng trắng */
+            color: #ffffff;
+            /* Màu nút đóng trắng */
             opacity: 0.8;
         }
+
         .toast-custom .btn-close:hover {
             opacity: 1;
         }
+
         .collapse.show {
-    background-color: #495057;
-}
-.nav-link:hover {
-    background-color: #495057;
-    border-radius: 4px;
-}
+            background-color: #495057;
+        }
+
+        .nav-link:hover {
+            background-color: #495057;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
@@ -133,8 +150,9 @@
                         <a class="nav-link" href="?action=home">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng Xuất</a>
+                        <a class="nav-link" href="?action=logout">Đăng Xuất</a>
                     </li>
+
                 </ul>
             </div>
         </div>

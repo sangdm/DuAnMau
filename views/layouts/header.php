@@ -65,9 +65,19 @@
       <a href="index.php">Trang chủ</a>
       <a href="index.php?action=products">Sản phẩm</a>
     </nav>
-    <a href="index.php?action=login" class="login-btn">
-      <i class="fa-solid fa-user"></i> Login
-    </a>
+
+    <?php if(isset($_SESSION['user_id'])): ?>
+      <!-- Nếu đã login, hiện nút Logout -->
+      <a href="index.php?action=logout" class="login-btn">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </a>
+    <?php else: ?>
+      <!-- Nếu chưa login, hiện nút Login -->
+      <a href="index.php?action=login" class="login-btn">
+        <i class="fa-solid fa-user"></i> Login
+      </a>
+    <?php endif; ?>
+
   </header>
 </body>
 </html>

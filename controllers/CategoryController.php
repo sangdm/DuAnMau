@@ -1,16 +1,19 @@
 <?php
 require_once 'models/CategoryModel.php';
 
-class CategoryController {
+class CategoryController
+{
 
-    public function index() {
+    public function index()
+    {
         // Chuyển hướng mặc định đến danh sách danh mục
         header("Location: index.php?action=category&act=list");
         exit;
     }
 
     // Danh sách danh mục
-    public function list() {
+    public function list()
+    {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->getAll();
         $view = 'views/admin/CategoryList.php';
@@ -19,17 +22,19 @@ class CategoryController {
     }
 
     // Form thêm danh mục
-    public function add() {
+    public function add()
+    {
         $view = 'views/admin/CategoryAdd.php';
         include 'views/admin/layout.php';
     }
 
     // Lưu danh mục mới
-    public function store() {
+    public function store()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'name' => $_POST['name'],
-                'image_url' => $_POST['image_url']
+                'imageURL' => $_POST['imageURL'] ?? null   // phải trùng với Model
             ];
 
             $categoryModel = new CategoryModel();
@@ -44,7 +49,8 @@ class CategoryController {
     }
 
     // Xóa danh mục
-    public function delete() {
+    public function delete()
+    {
         $id = $_GET['id'] ?? null;
 
         if (!$id) {
@@ -65,7 +71,8 @@ class CategoryController {
         }
     }
 
-     public function show() {
+    public function show()
+    {
         $category_id = $_GET['category_id'] ?? null;
         if (!$category_id) {
             echo "Danh mục không tồn tại!";
@@ -81,6 +88,4 @@ class CategoryController {
         include 'views/Categories.php'; // file hiển thị sản phẩm theo danh mục
         include 'views/layouts/footer.php';
     }
-
-    
 }
